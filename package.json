@@ -1,0 +1,34 @@
+{
+  "name": "sofa-fe-h5-boilerplate",
+  "version": "1.0.0",
+  "description": "sofa-fe h5-boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -cp&&webpack-dev-server --content-base dist/ --progress --colors"
+  },
+  "author": "didife",
+  "license": "ISC",
+  "dependencies": {
+    "zepto": "^1.0.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.12.0",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.xiaojukeji.com:sofa-fe/h5-boilerplate.git"
+  },
+  "keywords": [
+    "didi",
+    "h5-boilerplate"
+  ]
+}

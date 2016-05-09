@@ -1,0 +1,4 @@
+#node_modules不在代码仓库维护
+#.idea是webstorm的默认目录
+node_modules
+.idea/
