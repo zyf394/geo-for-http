@@ -10,8 +10,7 @@ var appTemplate = require("../tmpl/appTemplate.html"),
     compile = require('./common/tmpl.js');
 
 var App = {
-    $el: $("#app"),//如不引入zepto，需修改为原生选择器
-
+    $el: $("#pay-detail"),//如不引入zepto，需修改为原生选择器
     appTemplate: compile(appTemplate),
 
     init: function () {

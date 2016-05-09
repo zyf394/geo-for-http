@@ -1,5 +1,80 @@
 @import url(csslib.less);
 
-#app{
-  background: @greyColor;
+#pay-detail{
+  h3{
+    .rem(margin-top,60rem);
+    .rem(padding,0rem,108rem,0rem,108rem);
+    font-size: 12px;
+    color: #adadad;
+    text-align: center;
+
+    span{
+      background: #fff;
+      padding:0 6px;
+    }
+
+    &::after{
+      display: block;
+      margin-top:-7px;
+      content: "";
+      height: 1px;
+      background: #e5e5e5;
+    }
+  }
+
+  h2{
+    .rem(margin-top,70rem);
+    font-size: 50px;
+    color: #333;
+    text-align: center;
+
+    span{
+      font-size: 14px;
+    }
+  }
+
+  table{
+    width: 100%;
+    .rem(margin,60rem,0rem,0rem,0rem);
+    thead{
+      th{
+        color: #666;
+      }
+    }
+    tbody{
+      th{
+        color: @orangeColor;
+      }
+    }
+    th{
+      font-size: 14px;
+      line-height: 2.5;
+
+      &:nth-child(odd){
+        text-align: left;
+        .rem(padding-left,108rem)
+      }
+      &:nth-child(even){
+        text-align: right;
+        .rem(padding-right,108rem)
+      }
+    }
+  }
+
+  p{
+    text-align: center;
+    a{
+      vertical-align: middle;
+      font-size: 12px;
+      color: #adadad;
+      transform: scale(0.8);
+      -webkit-transform: scale(0.8);
+    }
+    img{
+      vertical-align: middle;
+      transform: scale(0.5);
+      -webkit-transform: scale(0.5);
+    }
+  }
+
 }
