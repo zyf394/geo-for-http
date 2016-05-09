@@ -4,4 +4,4 @@
 - git clone git@git.xiaojukeji.com:sofa-fe/h5-boilerplate.git
 - 运行 npm install
 - 依赖安装完后运行 npm run dev
-- 打开http://localhost:8080/即可查看项目效果
+- 打开http://localhost:8080/ 即可查看项目效果
