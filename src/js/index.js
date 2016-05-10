@@ -60,8 +60,7 @@ var App = {
         var me = this;
         me.$el.html(me.appTemplate({data: data}));
     }
-
-
+    
 };
 
 App.init();
