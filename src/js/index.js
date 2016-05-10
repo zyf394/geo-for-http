@@ -10,7 +10,8 @@ var appTemplate = require("../tmpl/appTemplate.html"),
     compile = require('./common/tmpl.js');
 
 var App = {
-    $el: $("#pay-detail"),//如不引入zepto，需修改为原生选择器
+    $el: $("#app"),//如不引入zepto，需修改为原生选择器
+
     appTemplate: compile(appTemplate),
 
     init: function () {
@@ -43,12 +44,14 @@ var App = {
         }, false);
     },
 
-    triggerEvent: function (type) {
+    triggerEvent: function (type, options) {
         /*触发与NA通信的事件*/
-        if (typeof DidiJSBridge !== "undefined") {
-            DidiJSBridge.callHandler(type, {}, function (res) {
-            });
-        } else {
+        if(typeof options === "undefined"){
+            options = {};//options为传给native的对象，必须是字典类型
+        }
+        if(typeof DidiJSBridge !== "undefined"){
+            DidiJSBridge.callHandler(type, options, function (res){});
+        }else {
             alert("DidiJSBridge未加载成功！")
         }
     },
@@ -57,6 +60,7 @@ var App = {
         var me = this;
         me.$el.html(me.appTemplate({data: data}));
     }
+
 
 };
 
