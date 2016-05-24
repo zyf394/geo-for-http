@@ -7,10 +7,10 @@ require('./common/rem.js');
 require('./common/log.js');
 require('../../node_modules/zepto/zepto.min.js');//可以不用zepto，但是$el里的选择器方法需要更改为原生选择器
 
-var appTemplate = require("../tmpl/appTemplate.html"),
+let appTemplate = require("../tmpl/appTemplate.html"),
     compile = require('./common/tmpl.js');
 
-var App = {
+let App = {
     $el: $("#app"),//如不引入zepto，需修改为原生选择器
 
     appTemplate: compile(appTemplate),
@@ -59,7 +59,7 @@ var App = {
     },
 
     render: function (data) {
-        var me = this;
+        let me = this;
         me.$el.html(me.appTemplate({data: data}));
     }
 
