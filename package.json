@@ -4,7 +4,7 @@
   "description": "sofa-fe h5-boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -cp&&webpack-dev-server --content-base dist/ --progress --colors"
+    "dev": "webpack -cp&&webpack-dev-server -d --content-base dist/ --hot --progress --colors"
   },
   "author": "didife",
   "license": "ISC",
@@ -12,6 +12,9 @@
     "zepto": "^1.0.1"
   },
   "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "html-loader": "^0.4.3",

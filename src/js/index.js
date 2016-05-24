@@ -4,6 +4,7 @@
 require('../css/reset.less');
 require('../css/app.less');
 require('./common/rem.js');
+require('./common/log.js');
 require('../../node_modules/zepto/zepto.min.js');//可以不用zepto，但是$el里的选择器方法需要更改为原生选择器
 
 var appTemplate = require("../tmpl/appTemplate.html"),
@@ -15,13 +16,14 @@ var App = {
     appTemplate: compile(appTemplate),
 
     init: function () {
-        var me = this;
+        let me = this;
         me.render({
             title:"SOFA",
             desc:"something something something..."
         });
         me.bindEvents();
         me.initDidiJsBridge();
+
     },
 
     bindEvents: function () {
@@ -60,7 +62,7 @@ var App = {
         var me = this;
         me.$el.html(me.appTemplate({data: data}));
     }
-    
+
 };
 
 App.init();

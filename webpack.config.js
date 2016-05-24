@@ -32,6 +32,12 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html'
+            },
+            {
+                // 编译es6
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
             }
         ]
     },
