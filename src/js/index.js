@@ -1,10 +1,8 @@
 /**
  * Created by zhongyufei on 2016/4/26.
  */
-require('../css/reset.less');
-require('../css/app.less');
-require('./common/rem.js');
-require('./common/log.js');
+require('../static/css/reset.less');
+require('../static/css/app.less');
 require('../../node_modules/zepto/zepto.min.js');//可以不用zepto，但是$el里的选择器方法需要更改为原生选择器
 
 let appTemplate = require("../tmpl/appTemplate.html"),

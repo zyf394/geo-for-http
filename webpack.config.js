@@ -4,6 +4,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
+        common:[
+            "./src/js/common/rem.js",
+            "./src/js/common/tmpl.js",
+            "./src/js/common/log.js"
+        ],
         index: "./src/js/index.js"
     },
     output: {
@@ -25,7 +30,7 @@ module.exports = {
                 // 在页面中加载图片示例：var imgstr = require("./imgs/3.png");
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'url?limit=5012&name=./imgs/[name]_[hash].[ext]'
+                    'url?limit=5012&name=./static/images/[name]_[hash].[ext]'
                     // 'image-webpack?{bypassOnDebug:true, progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
                 ]
             },
@@ -42,6 +47,15 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            //把common中的所有的js打包成一个common.js
+            name: "common",
+            // filename: "common.js"
+            // (Give the chunk a different name)
+            minChunks: Infinity
+            // (with more entries, this ensures that no other module
+            //  goes into the vendor chunk)
+        }),
         new HtmlWebpackPlugin({
             title: '标题标题',
             template: './src/index.html', // 源模板文件
@@ -51,7 +65,7 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true
             },
-            chunks: ["index"]
+            chunks: ["common","index"]
         })
     ]
 };

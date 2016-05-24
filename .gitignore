@@ -2,5 +2,4 @@
 #.idea是webstorm的默认目录
 #dist/为打包后输出的文件夹
 node_modules
-dist
 .idea/

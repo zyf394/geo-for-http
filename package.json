@@ -4,7 +4,8 @@
   "description": "sofa-fe h5-boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -cp&&webpack-dev-server -d --content-base dist/ --hot --progress --colors"
+    "dev": "webpack-dev-server -d --content-base dist/ --hot --progress --colors",
+    "build":"webpack -cp"
   },
   "author": "didife",
   "license": "ISC",
