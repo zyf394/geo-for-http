@@ -3,15 +3,13 @@
  */
 require('../static/css/reset.less');
 require('../static/css/app.less');
-require('../../node_modules/zepto/zepto.min.js');//可以不用zepto，但是$el里的选择器方法需要更改为原生选择器
 
-let appTemplate = require("../tmpl/appTemplate.html"),
-    compile = require('./common/tmpl.js');
+let appTemplate = require("../tmpl/appTemplate.tpl");
 
 let App = {
     $el: $("#app"),//如不引入zepto，需修改为原生选择器
 
-    appTemplate: compile(appTemplate),
+    appTemplate: appTemplate,
 
     init: function () {
         let me = this;
@@ -44,14 +42,20 @@ let App = {
         }, false);
     },
 
-    triggerEvent: function (type, options) {
+    triggerEvent (type, options, callback) {
         /*触发与NA通信的事件*/
-        if(typeof options === "undefined"){
+        if (typeof options === "undefined") { // 只传一个参数的情况
             options = {};//options为传给native的对象，必须是字典类型
         }
-        if(typeof DidiJSBridge !== "undefined"){
-            DidiJSBridge.callHandler(type, options, function (res){});
-        }else {
+        if(typeof options === 'function'){ // 只传两个参数,且第二个参数是callback
+            callback = options;
+            options = {};
+        }
+        if (typeof DidiJSBridge !== "undefined") {
+            DidiJSBridge.callHandler(type, options, function (res) {
+                typeof callback == 'function' && callback(res);
+            });
+        } else {
             alert("DidiJSBridge未加载成功！")
         }
     },

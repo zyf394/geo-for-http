@@ -1,13 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var autoprefixer = require('autoprefixer');
 module.exports = {
     entry: {
         common:[
-            "./src/js/common/rem.js",
-            "./src/js/common/tmpl.js",
-            "./src/js/common/log.js"
+            "./src/js/common/rem.js"
         ],
         index: "./src/js/index.js"
     },
@@ -20,7 +18,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader'
+                loader: 'style-loader!css-loader!postcss-loader!less-loader'
             },
             {
                 test: /\.css$/,
@@ -39,12 +37,19 @@ module.exports = {
                 loader: 'html'
             },
             {
+                test: /\.(ejs|tpl|tmpl)$/,
+                loader: 'ejs'
+            },
+            {
                 // 编译es6
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             }
         ]
+    },
+    postcss: function () {
+        return [autoprefixer];
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
