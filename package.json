@@ -1,15 +1,16 @@
 {
-  "name": "sofa-fe-h5-boilerplate",
-  "version": "1.0.0",
-  "description": "sofa-fe h5-boilerplate",
-  "main": "index.js",
+  "name": "geo-for-http",
+  "version": "0.0.1",
+  "description": "a small tool to getCurrentPosition in http protocol",
+  "main": "./lib/geo.js",
   "scripts": {
-    "dev": "webpack-dev-server -d --content-base dist/ --hot --progress --colors",
-    "build": "webpack -cp"
+    "test": "webpack-dev-server -d --content-base dist/ --hot --progress --colors",
+    "build": "rimraf lib && babel src --copy-files --extensions .js --out-dir lib && uglifyjs ./lib/geo.js -o ./lib/geo.min.js --source-map ./lib/geo.min.js.map"
   },
-  "author": "didife",
+  "author": "zyf394",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.4.6",
     "zepto": "^1.0.1"
   },
   "devDependencies": {
@@ -25,17 +26,20 @@
     "less": "^2.6.1",
     "less-loader": "^2.2.2",
     "postcss-loader": "^1.1.1",
+    "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
+    "uglify-js": "^2.7.5",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
   "repository": {
     "type": "git",
-    "url": "git@git.xiaojukeji.com:sofa-fe/h5-boilerplate.git"
+    "url": "git@github.com:zyf394/geo-for-http.git"
   },
   "keywords": [
-    "didi",
-    "h5-boilerplate"
+    "geo",
+    "getCurrentPosition",
+    "location"
   ]
 }

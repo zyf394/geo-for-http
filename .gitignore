@@ -1,5 +1,3 @@
-#node_modules不在代码仓库维护
-#.idea是webstorm的默认目录
-#dist/为打包后输出的文件夹
+dist/
 node_modules
 .idea/
