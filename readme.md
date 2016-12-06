@@ -4,7 +4,7 @@ a small tool to getCurrentPosition in http protocol
 npm install geo-for-http
 ```
 ## usage 
-```
+```javascript
 import geo from 'geo-for-http'
 
 // first, use geo.register() to register to the map applicaiton you choose.
