@@ -1,19 +1,23 @@
 /**
  * Created by zhongyufei on 2016/4/26.
  */
-require('../static/css/app.less');
+import '../static/css/app.less';
 
+// import geo from '../../src/geo';
 import geo from '../../lib/geo';
 
 let appTemplate = require("../tmpl/appTemplate.tpl");
 
 let App = {
+
     $el: $("#app"),//如不引入zepto，需修改为原生选择器
 
     appTemplate: appTemplate,
 
-    init: function () {
+    init () {
         this.render();
+
+        geo.register();
 
         geo.getCurrentPosition('ali')
         .then(pos => {
@@ -23,7 +27,6 @@ let App = {
 
         geo.getCurrentPosition('baidu')
         .then(pos => {
-            debugger
             let html = `<p>lat: <span>${pos.lat}</span></p><p>lng: <span>${pos.lng}</span></p><p>maptype: <span>${pos.maptype}</span></p>`
             document.getElementById('bmap').innerHTML = html;
         })
@@ -40,9 +43,9 @@ let App = {
 
     },
 
-    render: function (data) {
+    render (data) {
         let me = this;
-        me.$el.html(me.appTemplate({data: data}));
+        me.$el.html(me.appTemplate());
     }
 
 };

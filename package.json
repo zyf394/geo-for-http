@@ -37,6 +37,7 @@
     "type": "git",
     "url": "git@github.com:zyf394/geo-for-http.git"
   },
+  "license": "MIT",
   "keywords": [
     "geo",
     "getCurrentPosition",
