@@ -12,6 +12,13 @@ module.exports = {
         chunkFilename: "js/[name].js"
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/, 
+                loader: "eslint-loader", 
+                exclude: /node_modules|lib/
+            }
+        ],
         loaders: [
             {
                 test: /\.less$/,

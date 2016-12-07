@@ -8,7 +8,7 @@
     "build": "rimraf lib && babel src --copy-files --extensions .js --out-dir lib && uglifyjs ./lib/geo.js -o ./lib/geo.min.js --source-map ./lib/geo.min.js.map"
   },
   "author": "zyf394",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.6",
     "zepto": "^1.0.1"
@@ -20,6 +20,11 @@
     "babel-preset-es2015": "^6.9.0",
     "css-loader": "^0.23.1",
     "ejs-loader": "^0.3.0",
+    "eslint": "^3.11.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^0.8.5",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.12.0",
@@ -37,7 +42,6 @@
     "type": "git",
     "url": "git@github.com:zyf394/geo-for-http.git"
   },
-  "license": "MIT",
   "keywords": [
     "geo",
     "getCurrentPosition",
