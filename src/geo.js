@@ -1,5 +1,8 @@
 import Promise from 'bluebird'
-
+/**
+ * [geo Object will be exported]
+ * @type {Object}
+ */
 const geo = {
   register: register,
   getCurrentPosition: getCurrentPosition
@@ -53,12 +56,16 @@ const util = {
     return Object.prototype.toString.call(obj) === '[object Function]'
   }
 }
-
-let cacheURL = [] // cache for js
 /**
- * [register description]
- * @param  {[type]} argument [description]
- * @return {[type]}          [description]
+ * [cacheURL cache for maps js url]
+ * @type {Array}
+ */
+let cacheURL = [] 
+
+/**
+ * [register appkey and appname for a Map Applicaiton]
+ * @param  {[Object]} appInfo [description]
+ * @return {[type]}         [description]
  */
 function register (appInfo = MAP_TYPES.QQMAP) {
   let mapKeys = Object.keys(MAP_TYPES)
@@ -72,7 +79,12 @@ function register (appInfo = MAP_TYPES.QQMAP) {
     app_name: appInfo.app_name
   }
 }
-
+/**
+ * [getCurrentPosition description]
+ * @param  {[String]} mapType    [valid value: 'qq'、'baidu'、'ali'、'h5']
+ * @param  {Object} posOptions [depends on which map you choose]
+ * @return {[type]}            [description]
+ */
 function getCurrentPosition (mapType = MAP_TYPES.QQMAP.type, posOptions = {}) {
   if (util.isObject(mapType)) { // only 1 Object-type param passed in
     posOptions = mapType
@@ -111,7 +123,14 @@ function getCurrentPosition (mapType = MAP_TYPES.QQMAP.type, posOptions = {}) {
     }
   })
 }
-
+/**
+ * [_useMapLocation description]
+ * @param  {[Function]} successFn  [success callback function]
+ * @param  {[Function]} errorFn    [error callback function]
+ * @param  {[Object]} posOptions [depends on which map you choose]
+ * @param  {[String]} mapType    [valid value: 'qq'、'baidu'、'ali'、'h5']
+ * @return {[type]}            [description]
+ */
 function _useMapLocation (successFn, errorFn, posOptions, mapType) {
   switch (mapType) {
     case MAP_TYPES.AMAP.type:
@@ -125,11 +144,23 @@ function _useMapLocation (successFn, errorFn, posOptions, mapType) {
       break
   }
 }
-
+/**
+ * [_H5Location description]
+ * @param  {[Function]} successFn  [description]
+ * @param  {[Function]} errorFn    [description]
+ * @param  {[Object]} posOptions [description]
+ * @return {[type]}            [description]
+ */
 function _H5Location (successFn, errorFn, posOptions) {
   window.navigator.geolocation.getCurrentPosition(successFn, errorFn, posOptions)
 }
-
+/**
+ * [_AMapLocation description]
+ * @param  {[Function]} successFn  [description]
+ * @param  {[Function]} errorFn    [description]
+ * @param  {[Object]} posOptions [description]
+ * @return {[type]}            [description]
+ */
 function _AMapLocation (successFn, errorFn, posOptions) {
   // http://developer.baidu.com/map/reference/index.php?title=Class:%E6%9C%8D%E5%8A%A1%E7%B1%BB/Geolocation
   _getScript('//webapi.amap.com/maps?v=1.3&key=' + MAP_TYPES.AMAP.app_key)
@@ -166,7 +197,13 @@ function _AMapLocation (successFn, errorFn, posOptions) {
     }
   })
 }
-
+/**
+ * [_BMapLocation description]
+ * @param  {[Function]} successFn  [description]
+ * @param  {[Function]} errorFn    [description]
+ * @param  {[Object]} posOptions [description]
+ * @return {[type]}            [description]
+ */
 function _BMapLocation (successFn, errorFn, posOptions) {
   // http://developer.baidu.com/map/reference/index.php?title=Class:%E6%9C%8D%E5%8A%A1%E7%B1%BB/Geolocation
   _getScript('//api.map.baidu.com/getscript?v=2.0&ak=' + MAP_TYPES.BMAP.app_key + '&services=&t=' + (+new Date()))
@@ -182,7 +219,13 @@ function _BMapLocation (successFn, errorFn, posOptions) {
     }, posOptions)
   })
 }
-
+/**
+ * [_QQMapLocation description]
+ * @param  {[Function]} successFn  [description]
+ * @param  {[Function]} errorFn    [description]
+ * @param  {[Object]} posOptions [description]
+ * @return {[type]}            [description]
+ */
 function _QQMapLocation (successFn, errorFn, posOptions) {
   // http://lbs.qq.com/tool/component-geolocation.html
   _getScript('//3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js')
@@ -191,7 +234,11 @@ function _QQMapLocation (successFn, errorFn, posOptions) {
     geolocation.getLocation(successFn, errorFn, posOptions)
   })
 }
-
+/**
+ * [_getScript description]
+ * @param  {[String]} mapJsUrl [map js url]
+ * @return {[type]}          [description]
+ */
 function _getScript (mapJsUrl) {
   return new Promise((resolve, reject) => {
     for (let url of cacheURL) { // if has cache url, resolve directly
