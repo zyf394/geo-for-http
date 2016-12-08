@@ -23,7 +23,8 @@ geo.getCurrentPosition()
 ```
 ## API
 
-| API | options | description |
-| --- | --- | --- |
-| register(opt) |  `opt.type`: String <br/>(valid value: 'qq'、'baidu'、'ali'、'h5') <br/> `opt.app_key`: String <br/>(your app key) <br/> `opt.app_name`: String<br/> (your app name) | register to the map applicaiton you choose. For stable use, you'd better register your app on each map official website. Then you will get a key , which is the only signature to identify your app, from one official website<br/>QQMAP is highly recommended. | 
-| getCurrentPosition() | none | You can get current position in `then()` function, like below :<br/>getCurrentPosition().then(function(position){console.log(position)})<br/>callback arguments:<br/>`position.lat`: latitude<br/>`position.lng`: longitude<br/>`maptype`: map app in use |
+| API | arguments | type | value | description |
+| --- | --- | --- | --- | --- |
+| register(arg) |  `arg.type`<br/>`arg.app_key`<br/> `arg.app_name`<br/> | String<br/>String<br/>String |  'qq'(default)/'baidu'/'ali'/'h5'<br/>(your app key) <br/> (your app name)  | Register to the map applicaiton you choose. QQMAP is highly recommended. | 
+| getCurrentPosition(mapType, options) |  `mapType`<br/>`options`<br/> | String<br/>Object | 'qq'(default)/'baidu'/'ali'/'h5'<br/>How to set options: [qqmap](http://lbs.qq.com/tool/component-geolocation.html)/[bmap]( http://developer.baidu.com/map/reference/index.php?title=Class:%E6%9C%8D%E5%8A%A1%E7%B1%BB/Geolocation)/[amap](http://lbs.amap.com/api/javascript-api/reference/location/) | Options of each map's original getCurrentPosition function, depends on which map you choose. _You can ignore it at most of the time_. | 
+| getCurrentPosition(arg)<br/>.then(pos => {}) |  `pos.lat`<br/>`pos.lng`<br/> `pos.maptype`<br/> | Float<br/>Float<br/>String |  (current postion latitude)<br/>(current postion longitude)<br/>(the map you're using)| Callback function of the `getCurrentPosition()`. | 
