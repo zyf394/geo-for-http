@@ -1,10 +1,10 @@
 {
   "name": "geo-for-http",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a small tool to getCurrentPosition in http protocol",
   "main": "./lib/geo.js",
   "scripts": {
-    "test": "webpack-dev-server -d --content-base dist/ --hot --progress --colors",
+    "dev": "webpack-dev-server -d --content-base dist/ --hot --progress --colors",
     "build": "rimraf lib && babel src --copy-files --extensions .js --out-dir lib && uglifyjs ./lib/geo.js -o ./lib/geo.min.js --source-map ./lib/geo.min.js.map"
   },
   "author": "zyf394",
