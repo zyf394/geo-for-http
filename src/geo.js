@@ -91,7 +91,7 @@ function getCurrentPosition (mapType = MAP_TYPES.QQMAP.type, posOptions = {}) {
   }
   return new Promise((resolve, reject) => {
     if (util.isSupportGeo) {
-      if (util.isHttps || mapType === MAP_TYPES.HTML5.type) {
+      if (mapType === MAP_TYPES.HTML5.type) {
         _H5Location(successFn, errorFn, posOptions)
       } else {
         _useMapLocation(successFn, errorFn, posOptions, mapType)
@@ -255,7 +255,6 @@ function _getScript (mapJsUrl) {
         resolve()
         sc.onload = sc.onreadystatechange = null
         cacheURL.push(mapJsUrl)
-        console.log(MAP_TYPES)
       }
     }
     sc.onerror = function (err) {
