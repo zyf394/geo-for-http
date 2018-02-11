@@ -227,7 +227,7 @@ function _BMapLocation (successFn, errorFn, posOptions) {
  */
 function _QQMapLocation (successFn, errorFn, posOptions) {
   // http://lbs.qq.com/tool/component-geolocation.html
-  _getScript('//3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js')
+  _getScript(`//apis.map.qq.com/tools/geolocation/min?key=${MAP_TYPES.QQMAP.app_key}&referer=${MAP_TYPES.QQMAP.app_name}`)
   .then(() => {
     let geolocation = new window.qq.maps.Geolocation(MAP_TYPES.QQMAP.app_key, MAP_TYPES.QQMAP.app_name)
     geolocation.getLocation(successFn, errorFn, posOptions)
