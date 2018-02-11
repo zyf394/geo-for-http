@@ -1,6 +1,6 @@
 {
   "name": "geo-for-http",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "a small tool to getCurrentPosition in http protocol",
   "main": "./lib/geo.js",
   "scripts": {
